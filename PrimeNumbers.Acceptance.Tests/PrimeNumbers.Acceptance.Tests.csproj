@@ -50,10 +50,21 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ConsoleAppTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrimeNumbers.BusinessLogic\PrimeNumbers.BusinessLogic.csproj">
+      <Project>{DD2F4C2B-D3B8-43FF-9CDF-4DD9377C287D}</Project>
+      <Name>PrimeNumbers.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrimeNumbers.UI.ConsoleApp\PrimeNumbers.UI.ConsoleApp.csproj">
+      <Project>{6e788be3-8441-4bf2-bfd6-63d76c453edc}</Project>
+      <Name>PrimeNumbers.UI.ConsoleApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
