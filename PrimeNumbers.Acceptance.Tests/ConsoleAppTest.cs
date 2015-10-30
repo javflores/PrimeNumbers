@@ -10,6 +10,34 @@ namespace PrimeNumbers.Acceptance.Tests
     internal class ConsoleAppTest
     {
         [Test]
+        [TestCase("0")]
+        [TestCase("-1")]
+        [TestCase("invalid rank")]
+        public void Should_Display_ErrorMessage_When_Invalid_Table_Rank(string input)
+        {
+            //given
+            var expectedOutput = String.Format("{0}{1}{2}", Program.ConsoleMessage, Program.ConsoleErrorMessage, Environment.NewLine);
+
+            //when
+            string output;
+            using (var writer = new StringWriter())
+            {
+                using (var reader = new StringReader(input))
+                {
+                    Console.SetOut(writer);
+                    Console.SetIn(reader);
+
+                    Program.Main(null);
+
+                    output = writer.ToString();
+                }
+            }
+
+            //then
+            Assert.AreEqual(expectedOutput, output);
+        }
+
+        [Test]
         public void Should_Create_And_Print_Prime_Numbers_Table()
         {
             //given

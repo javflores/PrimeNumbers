@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPrimeTableFactory.cs" />
+    <Compile Include="ITablePrinter.cs" />
+    <Compile Include="PrimeTable.cs" />
+    <Compile Include="PrimeTableFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabDelimitedTablePrinter.cs" />
   </ItemGroup>
