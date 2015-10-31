@@ -18,10 +18,16 @@ namespace PrimeNumbers.BusinessLogic
 
         public int GenerateNext()
         {
-            var currentValue = _primes.Any() ? _primes.Max() : 1;
+            var currentValue = _primes.Count == 0 
+                ? 1 
+                : _primes[_primes.Count - 1];
+
             while (true)
             {
-                currentValue++;
+                //skip even numbers except 2
+                var increment = (currentValue <= 2) ? 1 : 2;
+                currentValue += increment;
+
                 if (IsValuePrime(currentValue))
                 {
                     _primes.Add(currentValue);
