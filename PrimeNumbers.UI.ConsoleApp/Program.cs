@@ -24,6 +24,8 @@ namespace PrimeNumbers.UI.ConsoleApp
                 tabDelimitedTablePrinter.Print(primeTable);
             }
             else Console.WriteLine(ConsoleErrorMessage);
+
+            Console.ReadLine();
         }
     }
 }

@@ -54,10 +54,20 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="PrimeNumberGeneratorTest.cs" />
+    <Compile Include="PrimeTableFactoryTest.cs" />
+    <Compile Include="PrimeTableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabDelimitedTablePrinterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrimeNumbers.BusinessLogic\PrimeNumbers.BusinessLogic.csproj">
+      <Project>{dd2f4c2b-d3b8-43ff-9cdf-4dd9377c287d}</Project>
+      <Name>PrimeNumbers.BusinessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
