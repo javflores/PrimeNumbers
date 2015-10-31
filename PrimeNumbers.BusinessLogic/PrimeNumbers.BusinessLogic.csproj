@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPrimeNumberGenerator.cs" />
     <Compile Include="IPrimeTableFactory.cs" />
     <Compile Include="ITablePrinter.cs" />
+    <Compile Include="PrimeNumberGenerator.cs" />
     <Compile Include="PrimeTable.cs" />
     <Compile Include="PrimeTableFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

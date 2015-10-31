@@ -16,7 +16,8 @@ namespace PrimeNumbers.UI.ConsoleApp
             int rank;
             if (int.TryParse(rankString, out rank) && rank > 0)
             {
-                var primeTableFactory = new PrimeTableFactory();
+                var primeNumberGenerator = new PrimeNumberGenerator();
+                var primeTableFactory = new PrimeTableFactory(primeNumberGenerator);
                 var primeTable = primeTableFactory.Create(rank);
 
                 var tabDelimitedTablePrinter = new TabDelimitedTablePrinter();

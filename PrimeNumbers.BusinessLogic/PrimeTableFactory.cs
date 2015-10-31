@@ -1,16 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrimeNumbers.BusinessLogic
 {
     public class PrimeTableFactory : IPrimeTableFactory
     {
+        private readonly IPrimeNumberGenerator _primeNumberGenerator;
+
+        public PrimeTableFactory(IPrimeNumberGenerator primeNumberGenerator)
+        {
+            _primeNumberGenerator = primeNumberGenerator;
+        }
+
         public PrimeTable Create(int rank)
         {
-            throw new NotImplementedException();
+            if (rank < 1)
+                throw new ArgumentException();
+
+            var axis = GetTableAxis(rank);
+            return new PrimeTable(axis);
+        }
+
+        private int[] GetTableAxis(int rank)
+        {
+            var primes = new List<int>();
+            while (primes.Count < rank)
+            {
+                var prime = _primeNumberGenerator.GenerateNext();
+                primes.Add(prime);
+            }
+
+            return primes.ToArray();
         }
     }
 }
