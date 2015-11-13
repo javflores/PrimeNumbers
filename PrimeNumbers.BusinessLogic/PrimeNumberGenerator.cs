@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PrimeNumbers.BusinessLogic
@@ -7,19 +8,20 @@ namespace PrimeNumbers.BusinessLogic
     {
         private readonly List<int> _primes = new List<int>();
 
-        public PrimeNumberGenerator()
+        public IEnumerator<int> GetEnumerator()
         {
+            return GenerateNext().GetEnumerator();
         }
 
-        public PrimeNumberGenerator(int start)
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            Initialize(start);
+            return GetEnumerator();
         }
 
-        public int GenerateNext()
+        IEnumerable<int> GenerateNext()
         {
-            var currentValue = _primes.Count == 0 
-                ? 1 
+            var currentValue = _primes.Count == 0
+                ? 1
                 : _primes[_primes.Count - 1];
 
             while (true)
@@ -28,24 +30,16 @@ namespace PrimeNumbers.BusinessLogic
                 var increment = (currentValue <= 2) ? 1 : 2;
                 currentValue += increment;
 
-                if (IsValuePrime(currentValue))
+                if (IsPrime(currentValue))
                 {
                     _primes.Add(currentValue);
-                    return currentValue;
                 }
+
+                yield return _primes.Last();
             }
         }
 
-        private void Initialize(int end)
-        {
-            for (var i = 2; i <= end; i++)
-            {
-                if(IsValuePrime(i))
-                    _primes.Add(i);
-            }
-        }
-
-        private bool IsValuePrime(int value)
+        private bool IsPrime(int value)
         {
             return _primes
                 .Select(prime => value%prime)

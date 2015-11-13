@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PrimeNumbers.BusinessLogic
 {
@@ -23,14 +24,7 @@ namespace PrimeNumbers.BusinessLogic
 
         private int[] GetTableAxis(int rank)
         {
-            var primes = new List<int>();
-            while (primes.Count < rank)
-            {
-                var prime = _primeNumberGenerator.GenerateNext();
-                primes.Add(prime);
-            }
-
-            return primes.ToArray();
+            return _primeNumberGenerator.Take(rank).ToArray();
         }
     }
 }

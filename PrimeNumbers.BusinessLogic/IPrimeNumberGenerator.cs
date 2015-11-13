@@ -1,7 +1,8 @@
-﻿namespace PrimeNumbers.BusinessLogic
+﻿using System.Collections.Generic;
+
+namespace PrimeNumbers.BusinessLogic
 {
-    public interface IPrimeNumberGenerator
+    public interface IPrimeNumberGenerator : IEnumerable<int>
     {
-        int GenerateNext();
     }
 }

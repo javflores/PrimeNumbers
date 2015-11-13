@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 using PrimeNumbers.BusinessLogic;
 
 namespace PrimeNumbers.Unit.Tests
@@ -7,22 +8,17 @@ namespace PrimeNumbers.Unit.Tests
     internal class PrimeNumberGeneratorTest
     {
         [Test]
-        [TestCase(1, 2)]
-        [TestCase(2, 3)]
-        [TestCase(3, 5)]
-        [TestCase(5, 7)]
-        [TestCase(7, 11)]
-        [TestCase(11, 13)]
-        public void Should_Generate_Prime_Number(int start, int expected)
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(7)]
+        [TestCase(11)]
+        [TestCase(13)]
+        public void Should_Generate_Prime_Number(int expected)
         {
-            //given
-            var primeNumberGenerator = new PrimeNumberGenerator(start);
+            var primeNumberGenerator = new PrimeNumberGenerator();
 
-            //when
-            var prime = primeNumberGenerator.GenerateNext();
-
-            //then
-            Assert.AreEqual(expected, prime);
+            Assert.IsTrue(primeNumberGenerator.Any(prime => prime == expected));
         }
     }
 }
